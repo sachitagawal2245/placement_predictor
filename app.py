@@ -20,8 +20,6 @@ projected = st.number_input("Project Completed (1-10)", min_value=0, max_value=1
 if st.button("Predict Performance"):
     features = np.array([[iq, prev_sem, cgpa, academic, internship, extra, communication, projected]])
     scaled_features = scaler.transform(features)
-
-    # Predict
     prediction = model.predict(scaled_features)
     result = "Yes you will get placement in a company as you have a great performance" if prediction[0] == 1 else "No you won't get a placement "
     proba = model.predict_proba(scaled_features)[0]
